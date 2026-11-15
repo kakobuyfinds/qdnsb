@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>KameyMall spreadsheet – Produktlinks, QC-Fotos und Versand</title>
+  <meta name="description" content="KameyMall spreadsheet auf Deutsch erklärt: Entdecke zehn Kategorien und prüfe Artikelnummer, Größe, QC-Fotos und Versandkosten vor der Bestellung.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="KameyMall spreadsheet – Produktlinks, QC-Fotos und Versand">
+  <meta property="og:description" content="Zehn Kategorien und eine Checkliste für Produktlinks, Größen, QC-Fotos und Versand nach Deutschland.">
+  <meta name="theme-color" content="#f8f4ed">
+  <link rel="preconnect" href="https://www.courtsidesneakers.com">
+  <!--
+    Nebenschlüsselwörter: KameyMall Produktliste, KameyMall Finds, KameyMall QC-Fotos, KameyMall Versand nach Deutschland.
+    Longtail-Recherche: KameyMall spreadsheet auf Deutsch; KameyMall spreadsheet für Sneaker; KameyMall spreadsheet für Hoodies; KameyMall spreadsheet für Trikots; KameyMall spreadsheet für Accessoires; KameyMall Produktlink prüfen; KameyMall Artikelnummer finden; Weidian Produktlink prüfen; Taobao Produktvariante vergleichen; Händler und Artikelnummer abgleichen; QC-Fotos für Sneaker prüfen; QC-Fotos mit Originalangebot vergleichen; Schuhgröße in Zentimetern vergleichen; Innensohlenlänge vor dem Kauf prüfen; Hoodie Brustweite richtig messen; T-Shirt flach messen; Jackenmaße mit eigener Kleidung vergleichen; Kappenumfang vor dem Kauf messen; Ringgröße mit Innendurchmesser prüfen; Schmuckmaterial im Angebot prüfen; Versandkosten für mehrere Artikel vergleichen; Volumengewicht und Paketgewicht vergleichen; Gesamtpreis beim Agenten berechnen; Rückgabefrist vor dem Versand prüfen; Deutschland als Zielland bei Versand wählen.
+    Recherchebasis: kameymall-sheet.com, chinareptools.com, bestkameymallspreadsheet.com, jadeship.com, kameymallspreadsheet.org, kameymallspreadsheet.net, kameymallsheet.com, kameymallspreadsheets.com, kameymall.com und findhaul.com. Die Google-Ergebnisseite war nur als Weiterleitungsseite abrufbar. Die ergänzende Websuche liefert keine bestätigte Google-Rangfolge.
+  -->
+  <style>
+    :root {
+      color-scheme: light;
+      --paper:#f8f4ed; --ink:#241d30; --muted:#584e60; --accent:#57347a;
+      --line:#d8cddd; --card:#fffdf9; --lavender:#e9def1;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:1rem/1.65 system-ui,sans-serif; }
+    .wrap { width:min(72rem,calc(100% - 2rem)); margin-inline:auto; }
+    header { border-bottom:1px solid var(--line); }
+    header .wrap { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding-block:.85rem; }
+    .brand { font-family:Georgia,serif; font-size:1.35rem; font-weight:700; text-decoration:none; }
+    a { color:var(--accent); text-underline-offset:.19em; }
+    :focus-visible { outline:3px solid #76409e; outline-offset:4px; }
+    h1,h2,h3,p,figure { margin:0; }
+    h1,h2 { font-family:Georgia,serif; line-height:1.06; }
+    h1 { font-size:clamp(2.55rem,6.8vw,5.55rem); letter-spacing:-.055em; }
+    h2 { font-size:clamp(1.85rem,4vw,3rem); letter-spacing:-.035em; }
+    h3 { line-height:1.3; }
+    p + p { margin-top:.8rem; }
+    .hero { display:grid; grid-template-columns:1.15fr 1fr; align-items:center; gap:clamp(1rem,4vw,3.5rem); padding-block:clamp(1.5rem,5vw,4.25rem) 1.5rem; }
+    .hero p { margin-block:1rem 1.3rem; max-width:52ch; }
+    .button { display:inline-block; padding:.7rem 1.15rem; border-radius:.35rem; background:var(--accent); color:white; font-weight:700; text-decoration:none; }
+    .button:hover { background:#3b2057; }
+    .hero-photo { background:var(--lavender); border-radius:2.2rem .45rem; overflow:hidden; }
+    img { display:block; width:100%; }
+    .hero-photo img { aspect-ratio:16/11; height:auto; object-fit:contain; padding:.6rem; }
+    .hero-photo figcaption { padding:.25rem .9rem .65rem; font-size:.85rem; }
+    .categories { padding:1rem 0 1.7rem; }
+    .categories h2 { font:700 1.15rem/1.3 system-ui,sans-serif; letter-spacing:0; }
+    .category-list { padding:0; margin:.8rem 0 0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr)); gap:.45rem; }
+    .category-list a { display:flex; align-items:center; min-height:44px; padding:.5rem .7rem; border:1px solid var(--line); border-radius:.35rem; background:var(--card); font-weight:650; text-decoration:none; }
+    .category-list a:hover { background:var(--lavender); }
+    section + section { padding-block:1.6rem; border-top:1px solid var(--line); }
+    section > p { margin-top:.7rem; max-width:76ch; color:var(--muted); }
+    .gallery,.guides { display:grid; gap:.75rem; margin-top:1rem; }
+    .gallery { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .gallery figure,.guides article { background:var(--card); border:1px solid var(--line); border-radius:.5rem; overflow:hidden; }
+    .gallery img { aspect-ratio:1; height:auto; object-fit:contain; background:#eee8ed; }
+    .gallery figcaption { padding:.6rem .75rem; font-size:.88rem; }
+    .guides { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .guides article { padding:1.1rem; }
+    .guides p { margin-top:.65rem; }
+    .faq { max-width:56rem; margin-top:1rem; }
+    details { border-bottom:1px solid var(--line); padding:.75rem 0; }
+    summary { color:var(--accent); cursor:pointer; font-weight:700; }
+    details p { padding:.45rem 0 .25rem; }
+    footer { margin-top:1rem; padding:1.25rem 0 2rem; border-top:1px solid var(--line); }
+    @media (max-width:48rem) {
+      .hero { grid-template-columns:1fr; }
+      .hero-photo img { aspect-ratio:2/1; }
+      .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .guides { grid-template-columns:1fr; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "name":"KameyMall spreadsheet – Produktlinks, QC-Fotos und Versand",
+        "description":"KameyMall spreadsheet auf Deutsch erklärt: Entdecke zehn Kategorien und prüfe Artikelnummer, Größe, QC-Fotos und Versandkosten vor der Bestellung.",
+        "inLanguage":"de"
+      },
+      {
+        "@type":"FAQPage",
+        "inLanguage":"de",
+        "mainEntity":[
+          {"@type":"Question","name":"Was ist ein KameyMall spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"Ein KameyMall spreadsheet ist eine nach Kategorien geordnete Sammlung von Produktlinks und Notizen. Nutze die Liste zur Orientierung und gleiche jeden Fund mit dem aktuellen Angebot des Händlers ab."}},
+          {"@type":"Question","name":"Wohin führen die Kategorie-Links?","acceptedAnswer":{"@type":"Answer","text":"Die Kategorie-Links öffnen den Katalog von Hipobuyfind. Diese Seite ist ein unabhängiger Einkaufsratgeber."}},
+          {"@type":"Question","name":"Was zeigen QC-Fotos vor dem Versand?","acceptedAnswer":{"@type":"Answer","text":"QC-Fotos zeigen sichtbare Merkmale eines Artikels, etwa Farbe, Nähte, Etiketten und Zustand. Bitte bei unklaren Details um eine Nahaufnahme oder ein Foto mit Maßband. Fotos allein reichen für einen Echtheitsnachweis nicht aus."}},
+          {"@type":"Question","name":"Wie schätze ich die Gesamtkosten nach Deutschland?","acceptedAnswer":{"@type":"Answer","text":"Wähle Deutschland als Zielland und addiere Artikelpreis, Inlandstransport, etwaige Servicegebühren, internationalen Versand und mögliche Einfuhrkosten. Prüfe die Versandrate für das abrechenbare Paketgewicht."}}
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/qdnsb/">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="https://www.hipobuyfind.com">Hipobuyfind</a>
+      <a href="https://www.hipobuyfind.com">Zum Produktkatalog</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div>
+        <h1 id="title">KameyMall spreadsheet</h1>
+        <p>Eine Produktliste führt dich zu Sneakern, Streetwear und Accessoires. Dieser Ratgeber zeigt dir, welche Angaben du beim Vergleichen brauchst: den Händler, die genaue Variante, belastbare Maße und die Kosten bis zu deiner Lieferadresse.</p>
+        <a class="button" href="https://www.hipobuyfind.com">Produkte entdecken</a>
+      </div>
+      <figure class="hero-photo">
+        <img src="https://www.courtsidesneakers.com/cdn/shop/products/315122-111-PHSRH000-750.png?v=1589453003&amp;width=680" width="680" height="468" alt="Weißer Nike Air Force 1 ’07 in der Seitenansicht" fetchpriority="high" loading="eager">
+        <figcaption>Weißer Nike Air Force 1 ’07 · Modellbeispiel</figcaption>
+      </figure>
+    </section>
+
+    <nav class="categories" aria-labelledby="categories">
+      <h2 id="categories">Direkt zu den Kategorien</h2>
+      <ul class="category-list">
+        <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Schuhe</a></li>
+        <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Hoodies &amp; Pullover</a></li>
+        <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-Shirts</a></li>
+        <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Jacken</a></li>
+        <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Hosen &amp; Shorts</a></li>
+        <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Kopfbedeckungen</a></li>
+        <li><a href="https://hipobuyfind.com/category-917-Sets.html">Sets</a></li>
+        <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Unterwäsche</a></li>
+        <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Trikots</a></li>
+        <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Accessoires</a></li>
+      </ul>
+    </nav>
+
+    <section aria-labelledby="details">
+      <h2 id="details">Welche Maße helfen beim Vergleichen?</h2>
+      <p>Die Modellbilder zeigen Beispiele für Schnitt, Material und Proportionen. Maße, Varianten und Verfügbarkeit stehen im jeweiligen Händlerangebot.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1758093355/819551_XJHJA_1043_003_100_0000_Light-cotton-jersey-t-shirt.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Schwarzes Gucci-T-Shirt aus Baumwolljersey">
+          <figcaption><strong>Gucci-T-Shirt</strong><br>Brustweite und Rückenlänge</figcaption>
+        </figure>
+        <figure>
+          <img src="https://la.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-gorra-monogram-surplus--M5338L_PM2_Front%20view.png?hei=480&amp;wid=480" width="480" height="480" loading="lazy" decoding="async" alt="Louis Vuitton Monogram Surplus Cap von vorn">
+          <figcaption><strong>Louis Vuitton Cap</strong><br>Kopfumfang und Verstellbereich</figcaption>
+        </figure>
+        <figure>
+          <img src="https://madisonavenuecouture.com/cdn/shop/products/H-SNDL-091322-3-01_1024x1024.jpg?v=1663770054&amp;width=480" width="480" height="480" loading="lazy" decoding="async" alt="Braune Hermès Oran Ledersandalen mit H-förmigem Riemen">
+          <figcaption><strong>Hermès Oran</strong><br>Fußlänge und Breite</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/R2752HOMSTD990_E01-1?wid=480" width="480" height="480" loading="lazy" decoding="async" alt="Silberfarbener Dior CD Icon Ring">
+          <figcaption><strong>Dior CD Icon</strong><br>Innendurchmesser und Material</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="guide">
+      <h2 id="guide">Vom Produktlink zur Bestellung</h2>
+      <div class="guides">
+        <article>
+          <h3>Produktlink und Variante prüfen</h3>
+          <p>Wenn du KameyMall Finds aus einer Weidian- oder Taobao-Liste vergleichst, notiere pro Fund Händler, Artikelnummer und Variante. Öffne den Produktlink erneut, bevor du bestellst. Ein bekanntes Foto kann bei mehreren Händlern auftauchen.</p>
+        </article>
+        <article>
+          <h3>QC-Fotos und Größen abgleichen</h3>
+          <p>Miss ein passendes Kleidungsstück flach und vergleiche Brustweite und Länge in Zentimetern. Bei Sneakern hilft die Innensohlenlänge eines gut sitzenden Paars. Vergleiche QC-Fotos mit der gewählten Variante und prüfe die Rückgabefrist, solange der Artikel noch im Lager ist.</p>
+        </article>
+        <article>
+          <h3>Versand nach Deutschland kalkulieren</h3>
+          <p>Denk bei mehreren Artikeln an Karton und Verpackung. Frage nach Paketmaßen und Gewicht. Je nach Versandtarif kann das Volumengewicht die Kosten bestimmen. Rechne Servicegebühren und mögliche Einfuhrkosten zum Warenwert hinzu.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">Häufige Fragen</h2>
+      <div class="faq">
+        <details open>
+          <summary>Was ist ein KameyMall spreadsheet?</summary>
+          <p>Ein KameyMall spreadsheet ist eine nach Kategorien geordnete Sammlung von Produktlinks und Notizen. Nutze die Liste zur Orientierung und gleiche jeden Fund mit dem aktuellen Angebot des Händlers ab.</p>
+        </details>
+        <details>
+          <summary>Wohin führen die Kategorie-Links?</summary>
+          <p>Die Kategorie-Links öffnen den Katalog von Hipobuyfind. Diese Seite ist ein unabhängiger Einkaufsratgeber.</p>
+        </details>
+        <details>
+          <summary>Was zeigen QC-Fotos vor dem Versand?</summary>
+          <p>QC-Fotos zeigen sichtbare Merkmale eines Artikels, etwa Farbe, Nähte, Etiketten und Zustand. Bitte bei unklaren Details um eine Nahaufnahme oder ein Foto mit Maßband. Fotos allein reichen für einen Echtheitsnachweis nicht aus.</p>
+        </details>
+        <details>
+          <summary>Wie schätze ich die Gesamtkosten nach Deutschland?</summary>
+          <p>Wähle Deutschland als Zielland und addiere Artikelpreis, Inlandstransport, etwaige Servicegebühren, internationalen Versand und mögliche Einfuhrkosten. Prüfe die Versandrate für das abrechenbare Paketgewicht.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><a href="https://www.hipobuyfind.com">Hipobuyfind-Katalog öffnen</a></div></footer>
+</body>
+</html>
